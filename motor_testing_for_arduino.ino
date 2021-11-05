@@ -11,7 +11,8 @@
   motor will remain off.
 */
 
-const int motorPin = 10;     // motor connected to PWM pin 9
+//commented out all code for the button to turn on motor 
+const int motorPin = 10;     // motor connected to PWM pin 10
 //const int button1Pin = A4;  // pushbutton 1 pin
 const int ledPin =  13;     // LED pin
 
@@ -22,7 +23,7 @@ void setup() {
   //Serial.println("Begin LilyPad Vibe Motor Tests");
 
   //pinMode(button1Pin, INPUT_PULLUP);//set internal pull up for button
-  pinMode(ledPin, OUTPUT); //visual feedback
+  pinMode(ledPin, OUTPUT); //set up LED for visual feedback
 
 
   //Quick Test 1: Check If LED and Motor Can Turn On
@@ -62,32 +63,17 @@ void setup() {
 }
 
 void loop() {
-  // Here we'll read the current pushbutton states into
-  // a variable:
-
-  // Remember that if the button is being pressed, it will be
-  // connected to GND. If the button is not being pressed,
-  // the pullup resistor will connect it to Vcc.
-
-  // So the state will be LOW when it is being pressed,
-  // and HIGH when it is not being pressed.
-
-  // Now we'll use those states to control the LED.
-  // Here's what we want to do:
+  // uses a timer to count to ten, during this time, motor turns on
+  // then 
 
 //  button1State = digitalRead(button1Pin);
-//
-//  if (button1State == LOW)  // if we're pushing button 1
-//  {
-//    //Serial.println("Button has been pressed, turn LilyPad Vibe Motor And LED ON");
-//    digitalWrite(ledPin, HIGH);  // turn the LED on
-//    analogWrite(motorPin, 255);  //turn motor on
-//    delay(300);                  //slight delay for feedback
-//  }
-//  else
-//  {
-//    digitalWrite(ledPin, LOW);  // turn the LED
-//    analogWrite(motorPin, 0);   //turn motor off
-//    delay(300);
-//  }
+
+  for (int timer = 0; timer <= 10; timer += 1)  // timer for motor on
+  {
+    //Serial.println("Button has been pressed, turn LilyPad Vibe Motor And LED ON");
+    digitalWrite(ledPin, HIGH);  // turn the LED on
+    analogWrite(motorPin, 255);  //turn motor on
+    delay(300);                  //slight delay for feedback
+  }
+  
 }
